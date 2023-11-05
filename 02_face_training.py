@@ -69,15 +69,12 @@ opt = Adam(learning_rate=lr, weight_decay=lr / epochs)
 model.compile(loss="binary_crossentropy", optimizer=opt, metrics=["accuracy"])
 
 # Huấn luyện mô hình
-H = model.fit(
-    aug.flow(trainX, trainY, batch_size=batch_size),
-    validation_data=(testX, testY),
-    steps_per_epoch=len(trainX) // batch_size,
-    epochs=epochs,
-    verbose=1
-)
+H = model.fit(aug.flow(trainX, trainY, batch_size=batch_size),
+              validation_data=(testX, testY),
+              steps_per_epoch=len(trainX) // batch_size,
+              epochs=epochs, verbose=1)
 
-# Lưu mô hình xuống ổ đĩa
+# Lưu mô hình
 model.save('D:/face_detection.keras')
 
 # Vẽ biểu đồ về sự biến thiên của loss và accuracy trong quá trình huấn luyện
@@ -89,7 +86,7 @@ plt.plot(np.arange(0, N), H.history["val_loss"], label="val_loss")
 plt.plot(np.arange(0, N), H.history["accuracy"], label="train_acc")
 plt.plot(np.arange(0, N), H.history["val_accuracy"], label="val_acc")
 
-plt.title("Sự biến thiên của Loss và Accuracy trong quá trình Huấn luyện")
+plt.title("Sự biến thiên của Loss và Accuracy khi huấn luyện")
 plt.xlabel("Số epoch")
 plt.ylabel("Loss/Accuracy")
 plt.legend(loc="upper right")

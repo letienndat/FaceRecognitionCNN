@@ -2,6 +2,7 @@ from keras.models import Sequential
 from keras.layers import BatchNormalization, Conv2D, MaxPooling2D, Activation, Flatten, Dropout, Dense
 from keras import backend as K
 
+
 # Định nghĩa mô hình
 def build(width, height, depth, classes):
     model = Sequential()

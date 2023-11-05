@@ -50,6 +50,8 @@ while webcam.isOpened():
         # Áp dụng mô hình nhận dạng khuôn mặt
         conf = model.predict(face_crop)[0]  # model.predict trả về ma trận 2D, ví dụ: [[9.9993384e-01 7.4850512e-05]]
 
+        print(conf)
+
         # Lấy nhãn có độ chính xác cao nhất
         index = np.argmax(conf)
         label = classes[index]
